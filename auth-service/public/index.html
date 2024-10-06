@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auth Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+    .form-container {
+      width: 30%;
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+    button {
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2>Авторизация</h2>
+      <form action="/login" method="POST">
+        <input type="text" name="login" placeholder="Логин" required />
+        <input type="password" name="password" placeholder="Пароль" required />
+        <button type="submit">Войти</button>
+      </form>
+    </div>
+    <div class="form-container">
+      <h2>Регистрация</h2>
+      <form action="/register" method="POST">
+        <input type="text" name="login" placeholder="Логин" required />
+        <input type="password" name="password" placeholder="Пароль" required />
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

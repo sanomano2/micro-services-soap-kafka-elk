@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AuthService"
+  targetNamespace="http://www.example.org/AuthService/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="http://www.example.org/AuthService/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <message name="processLoginRequest">
+    <part name="login" type="xsd:string"/>
+  </message>
+
+  <message name="processLoginResponse">
+    <part name="status" type="xsd:string"/>
+  </message>
+
+  <portType name="AuthServicePortType">
+    <operation name="processLogin">
+      <input message="tns:processLoginRequest"/>
+      <output message="tns:processLoginResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="AuthServiceSoapBinding" type="tns:AuthServicePortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="processLogin">
+      <soap:operation soapAction="processLogin"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="AuthService">
+    <documentation>SOAP-сервис для обработки авторизаций</documentation>
+    <port name="AuthServiceSoapPort" binding="tns:AuthServiceSoapBinding">
+      <soap:address location="http://localhost:5000/wsdl"/>
+    </port>
+  </service>
+</definitions>
